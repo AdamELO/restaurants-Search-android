@@ -6,6 +6,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Carousel from './CarouselInfoResto';
 import RatingStar from './RatingStar';
 import { useSelector, useDispatch } from 'react-redux';
+import { showLocation } from 'react-native-map-link'
 
 function RestaurantsShow({ navigation, route }) {
     const { idResto } = route.params;
@@ -42,15 +43,23 @@ function RestaurantsShow({ navigation, route }) {
         }
     }
 
+    function openMaps() {
+        if (restoInfo.hasOwnProperty('location')) {
+            showLocation({
+                latitude: restoInfo.coordinates.latitude,
+                longitude: restoInfo.coordinates.longitude
+            })
+        }else{
+            alert('No loction has been found')
+        }
+    }
+
+
     const displayBtnMaps = () => {
         return (
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => {
-                    if (restoInfo.hasOwnProperty('location')) {
-                        alert('google maps');
-                    }
-                }}
+                onPress={() => openMaps()}
             >
                 <FontAwesome5 name='map-marked-alt' size={16} color='gray' />
                 <View style={{ flexDirection: 'column', marginLeft: 8 }}>
@@ -255,7 +264,5 @@ const styles = StyleSheet.create({
         flex: 1,
     }
 })
-
-
 
 export default RestaurantsShow
