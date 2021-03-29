@@ -176,7 +176,7 @@ function RestaurantsShow({ navigation, route }) {
             return null
         } else {
             if (likeRestaurant.findIndex(item => item.id === restoInfo.id) !== -1) {
-                return <FontAwesome name='heart' size={20} color='red' />
+                return <FontAwesome name='heart' size={20} color='#fa3c6f' />
             } else {
                 return <FontAwesome name='heart' size={20} color='#f1f1f1' />
             }

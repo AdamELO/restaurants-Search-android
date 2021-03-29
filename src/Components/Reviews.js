@@ -59,7 +59,7 @@ export default function Reviews({ route }) {
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                         <Text style={{ fontSize: 30, fontWeight: 'bold' }}> {Number.isInteger(ratingTotal) ? ratingTotal + '.0' : ratingTotal} </Text>
                         <RatingStar rating={ratingTotal} ratingStyle={{ margin: 5 }} />
-                        <Text style={{ fontSize: 15, color: 'gray' }}>{reviewsInfo.total > 2 ? 'based on the 3 most relevant reviews' : reviewsInfo.total === 2 ? 'based on the 2 most relevant reviews' : 'based on 1 review'}</Text>
+                        <Text style={{ fontSize: 15, color: 'gray' }}>based on most relevant reviews</Text>
                     </View>
                     <View>
                         <BarRating color='green' rating='5' percent={() => ratingsPercent(5)} />
@@ -78,7 +78,6 @@ export default function Reviews({ route }) {
                 />
                 <Button
                     title='See complete reviews on browser'
-                    color='#134F5C'
                     onPress={() => allReviews(reviewsInfo.reviews[0].url)}
                 />
             </View>

@@ -14,7 +14,7 @@ export default function CarouselInfoResto({ photos }) {
                 renderItem={({ item }) => {
                     return (
                         <View>
-                            <Image style={styles.img} source={{ uri: item || null }} />
+                            <Image style={styles.img} source={{ uri: item } || require('../Images/noimg.png')} />
                         </View>
                     )
                 }}

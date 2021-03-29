@@ -10,7 +10,7 @@ function RestoDetail({ resto, isHeart, isPoop }) {
         if (isHeart) {
             return (
                 <Text style={styles.icon}>
-                    <FontAwesome name='heart' size={18} color='red' />
+                    <FontAwesome name='heart' size={18} color='#fa3c6f' />
                 </Text>
             )
         } else if (isPoop) {
@@ -27,7 +27,7 @@ function RestoDetail({ resto, isHeart, isPoop }) {
     return (
         <View style={styles.container}>
             <Image
-                source={{ uri: resto.image_url || null }}
+                source={resto.hasOwnProperty('image_url') ? { uri: resto.image_url } : require('../Images/noimg.png')}
                 style={styles.img}
             />
             <Text style={styles.title}>{resto.name}</Text>
