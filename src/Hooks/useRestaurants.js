@@ -8,14 +8,13 @@ export default () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
-    const searchApi = async (searchTerm,locations) => {
+    const searchApi = async (searchTerm, locations) => {
         setIsLoading(true)
         try {
             const response = await yelp.get('/search', {
                 params: {
                     limit: 50,
                     term: searchTerm,
-                    // location: 'brussels',
                     latitude: locations.latitude,
                     longitude: locations.longitude,
                     categories: 'food,burgers,pizza,friterie,pasta,desserts,churros,coffee,tea,cupcakes,donuts,gelato,juicebars,smoothies,icecream,tortillas,italian,indian,chinese',
@@ -32,10 +31,10 @@ export default () => {
     useEffect(() => {
         GetLocation.getCurrentPosition({
             enableHighAccuracy: true,
-            timeout: 10000,
+            timeout: 15000,
         }).then(location => {
             setLocation(location)
-            searchApi('burger',location);
+            searchApi('burger', location);
         }).catch(error => {
             setErrorMessage('Something went wrong, check your network, enable geo-location and reload app');
         })

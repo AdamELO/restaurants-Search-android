@@ -11,9 +11,13 @@ const Search = ({ navigation }) => {
 
 
     const filterRestaurantsByPrice = (price) => {
-        return restaurants.filter((result) => {
+        const restaurantsFilterOpen = restaurants.filter((result) => {
+            return result.is_closed !== true
+        })
+        const restaurantsFilterPrice = restaurantsFilterOpen.filter((result) => {
             return result.price === price
         }).sort((a, b) => (a.rating < b.rating) ? 1 : ((b.rating < a.rating) ? -1 : 0))
+        return restaurantsFilterPrice
     };
 
 
